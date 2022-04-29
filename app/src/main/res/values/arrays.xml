@@ -1,0 +1,49 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+
+    <string-array name="rest_entries">
+    <item>5 s</item>
+    <item>10 s</item>
+    <item>15 s</item>
+    </string-array>
+
+    <string-array name="rest_values">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+    </string-array>
+
+    <string-array name="repetition_entries">
+        <item>3 mal</item>
+        <item>5 mal</item>
+        <item>7 mal</item>
+    </string-array>
+
+    <string-array name="repetition_values">
+        <item>3</item>
+        <item>5</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="Training_Days">
+        <item>"Monday"</item>
+        <item>"Tuesday"</item>
+        <item>"Wednesday</item>
+        <item>"Thursday"</item>
+        <item>"Friday"</item>
+        <item>"Saturday</item>
+        <item>"Sunday</item>
+    </string-array>
+
+    <string-array name="RestTime_Values">5s</string-array>
+    <string name="Reply1">Reply11</string>
+</resources>

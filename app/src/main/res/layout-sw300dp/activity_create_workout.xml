@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.androidmads.navdraweractivity.Module.WorkoutModuleCreateActivity">
+
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        android:text="Name:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/select_name"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_alignLeft="@+id/button"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:inputType="text"
+        android:onClick="selectName"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/textView_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_hang"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Hang Time:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+
+    <Button
+        android:id="@+id/button_hangtime"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="selectHangTime"
+        android:text="Select"
+        app:layout_constraintStart_toEndOf="@+id/textView_hang"
+        app:layout_constraintTop_toBottomOf="@+id/select_name" />
+
+    <TextView
+        android:id="@+id/textView_rest"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Rest Time:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_hang" />
+
+    <Button
+        android:id="@+id/button_resttime"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="selectRestTime"
+        android:text="Select"
+        app:layout_constraintStart_toEndOf="@+id/textView_rest"
+        app:layout_constraintTop_toBottomOf="@+id/button_hangtime" />
+
+    <TextView
+        android:id="@+id/textView_rep"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Repetitions:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_rest" />
+
+    <Button
+        android:id="@+id/button_repetitions"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="selectRepetitions"
+        android:text="Select"
+        app:layout_constraintStart_toEndOf="@+id/textView_rep"
+        app:layout_constraintTop_toBottomOf="@+id/button_resttime" />
+
+    <TextView
+        android:id="@+id/textView_set"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Sets:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_rep" />
+
+    <Button
+        android:id="@+id/button_sets"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="selectSet"
+        android:text="Select"
+        app:layout_constraintStart_toEndOf="@+id/textView_set"
+        app:layout_constraintTop_toBottomOf="@+id/button_repetitions" />
+
+    <TextView
+        android:id="@+id/textView_breaks"
+        android:layout_width="100dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="Breaks:"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_set" />
+
+    <Button
+        android:id="@+id/button_breaks"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="selectBreaks"
+        android:text="Select"
+        app:layout_constraintStart_toEndOf="@+id/textView_breaks"
+        app:layout_constraintTop_toBottomOf="@+id/button_sets" />
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="16dp"
+        android:onClick="save"
+        android:text="save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
