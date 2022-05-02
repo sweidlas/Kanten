@@ -83,7 +83,7 @@ public class WorkoutActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -94,7 +94,7 @@ public class WorkoutActivity extends BaseActivity {
             }
         }
     }
-
+/*
     public void selectTime(View view) {
 
         final Dialog d = new Dialog(WorkoutActivity.this); //oder getActivity().getApplicationContext();
@@ -126,15 +126,15 @@ public class WorkoutActivity extends BaseActivity {
 
         d.show();
 
-    }
+    }*/
 
-    public int addFragment(Integer id) {
+    public void addFragment(Integer id) {
 
         FrameLayout aLayout = new FrameLayout(this);
         aLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FILL_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
 
         aLayout.setId(id);
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.mainLayout);
+        LinearLayout linearLayout = findViewById(R.id.mainLayout);
         linearLayout.addView(aLayout);
 
         WorkoutClosedFragment newFragment = new WorkoutClosedFragment();
@@ -149,7 +149,7 @@ public class WorkoutActivity extends BaseActivity {
         myEdit.putInt("Fragment"+id.toString(), id);
         myEdit.commit();
 
-        return id;
+        //return id;
     }
 
     public void setupFragments(){
@@ -164,7 +164,7 @@ public class WorkoutActivity extends BaseActivity {
                 FrameLayout aLayout = new FrameLayout(this);
                 aLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.FILL_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT));
                 aLayout.setId(id);
-                LinearLayout linearLayout = (LinearLayout) findViewById(R.id.mainLayout);
+                LinearLayout linearLayout = findViewById(R.id.mainLayout);
                 linearLayout.addView(aLayout);
 
                 WorkoutClosedFragment newFragment = new WorkoutClosedFragment();
@@ -183,9 +183,9 @@ public class WorkoutActivity extends BaseActivity {
         final Dialog d = new Dialog(this);
         //d.setTitle("NumberPicker");
         d.setContentView(R.layout.dialog_nameworkout);
-        Button b1 = (Button) d.findViewById(R.id.dialogN_button1);
-        Button b2 = (Button) d.findViewById(R.id.dialogN_button2);
-        final EditText editText = (EditText) d.findViewById(R.id.workoutName);
+        Button b1 = d.findViewById(R.id.dialogN_button1);
+        Button b2 = d.findViewById(R.id.dialogN_button2);
+        final EditText editText = d.findViewById(R.id.workoutName);
 
         b1.setOnClickListener(new View.OnClickListener()
         {
@@ -228,15 +228,15 @@ public class WorkoutActivity extends BaseActivity {
         d.show();
     }
 
-    public String changeWorkoutName(Integer id) {
+    public void changeWorkoutName(Integer id) {
         final Integer ID = id;
         final Dialog d = new Dialog(this);
         d.setContentView(R.layout.dialog_nameworkout);
-        Button b1 = (Button) d.findViewById(R.id.dialogN_button1);
-        Button b2 = (Button) d.findViewById(R.id.dialogN_button2);
-        TextView text = (TextView) d.findViewById(R.id.textView2);
+        Button b1 = d.findViewById(R.id.dialogN_button1);
+        Button b2 = d.findViewById(R.id.dialogN_button2);
+        TextView text = d.findViewById(R.id.textView2);
         text.setText("new workout name:");
-        final EditText editText = (EditText) d.findViewById(R.id.workoutName);
+        final EditText editText = d.findViewById(R.id.workoutName);
         SharedPreferences sh = getSharedPreferences("Fragment"+id.toString(), MODE_PRIVATE);
         editText.setText(sh.getString("Name", ""));
         if (editText.getText().length() > 0 ) {
@@ -274,11 +274,11 @@ public class WorkoutActivity extends BaseActivity {
         });
         d.show();
 
-        return editText.getText().toString();
+        //return editText.getText().toString();
     }
 
     public ArrayList<String> getWorkoutNames() {
-        ArrayList<String> workoutNames = new ArrayList<String>();
+        ArrayList<String> workoutNames = new ArrayList<>();
         SharedPreferences sh1 = getSharedPreferences("FragmentsModule", MODE_PRIVATE);
         Integer wid = sh1.getInt("workoutID", 0);
 

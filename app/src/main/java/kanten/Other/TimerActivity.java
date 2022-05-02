@@ -6,23 +6,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-
 import androidx.annotation.NonNull;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-
 import kanten.Module.WorkoutModuleActivity;
 import kanten.R;
 import kanten.Workout.WorkoutActivity;
-
-//import java.util.Map;
 
 public class TimerActivity extends BaseActivity {
 
@@ -58,13 +52,12 @@ public class TimerActivity extends BaseActivity {
         System.out.println("HIER: beim Timercreate: "+getIntent().getStringExtra(WORKOUTSET_ID));
 
         getWorkout2(); //Get the Workoutnames on the Variables
-        NameView = (TextView) findViewById(R.id.workoutname);
-        countdownView = (TextView) findViewById(R.id.countdownView);
-        hangRestView = (TextView) findViewById(R.id.workoutState);
-        button2 = (Button) findViewById(R.id.button1);
-        repetitionsView = (TextView) findViewById(R.id.Repetitions);
-        setsView = (TextView) findViewById(R.id.Sets);
-        nameView = (TextView) findViewById(R.id.workoutname);
+        countdownView = findViewById(R.id.countdownView);
+        hangRestView = findViewById(R.id.workoutState);
+        button2 = findViewById(R.id.button1);
+        repetitionsView = findViewById(R.id.Repetitions);
+        setsView = findViewById(R.id.Sets);
+        nameView = findViewById(R.id.workoutname);
 
         initializeNumbers();
 
@@ -75,21 +68,17 @@ public class TimerActivity extends BaseActivity {
 
         hangRestView.setText("");
 
-        //final TextView nameView = (TextView) findViewById(R.id.workoutname);
         String name = sh.getString("Name", "");
         nameView.setText("Modul: " + name);
 
-        //final TextView repetitionsView = (TextView) findViewById(R.id.Repetitions);
         Integer i = sh.getInt("Repetitions", 0);
         repetitionsView.setText("Repetitions: " + i.toString());
 
-        //final TextView setsView = (TextView) findViewById(R.id.Sets);
         Integer i2 = sh.getInt("Sets", 0);
         setsView.setText("Sets: " + i2.toString());
         timer_semaphor_initial_start = 1;
         semaphor_hang_or_rest = 1;
 
-        //final TextView countdownView = (TextView) findViewById(R.id.countdownView);
         Integer i3 = sh.getInt("HangTime_min", 0)*60+ sh.getInt("HangTime_sec", 0);
         Integer i4 = (sh.getInt("RestTime_min", 0)*60+ sh.getInt("RestTime_sec", 0));
         countdownView.setTextSize(30);
@@ -103,7 +92,6 @@ public class TimerActivity extends BaseActivity {
         Integer workout_int = getIntent().getIntExtra( WORKOUT_ID , 13 );
         if (workout_int != 13) {
             s = "workout" + workout_int.toString();
-           // System.out.println("HIER: workout1 von WorkoutModuleActivity: "+workout1);
         }
         return(s);
     }
@@ -113,7 +101,6 @@ public class TimerActivity extends BaseActivity {
         Integer workout_int = getIntent().getIntExtra( WORKOUT_ID , 0 );
         if (workout_int != 0) {
             workout1 = "workout" + workout_int.toString();
-            //System.out.println("HIER: workout1 von WorkoutModuleActivity: "+workout1);
             exitToModulesOrWorkout = true;
         }
         if ((workout_str = getIntent().getStringExtra(WORKOUTSET_ID)) != null) {
@@ -149,7 +136,7 @@ public class TimerActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -157,24 +144,6 @@ public class TimerActivity extends BaseActivity {
 
             this.finish();
             overridePendingTransition(R.anim.from_left_in, R.anim.from_right_out);
-            /*
-            if (exitToModulesOrWorkout == true) {
-                Intent intent = new Intent(this, WorkoutModuleActivity.class);
-                startAnimatedReverseActivity(intent);
-            } else {
-                Intent intent = new Intent(this, WorkoutActivity.class);
-                startAnimatedReverseActivity(intent);
-            }*/
-
-
-
-            /*
-            this.finish();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                finishAffinity();
-            } else {
-                super.onBackPressed();
-            }*/
         }
     }
 
@@ -182,14 +151,7 @@ public class TimerActivity extends BaseActivity {
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        /*
-        if (id == R.id.nav_activity1) {
-            startAnimatedActivity(new Intent(getApplicationContext(), TimerActivity.class));
-        } else if (id == R.id.nav_activity2) {
-            startAnimatedActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-        } else if (id == R.id.nav_activity3) {
-            startAnimatedActivity(new Intent(getApplicationContext(), ThirdActivity.class));
-        } else */if (id == R.id.nav_activity_workoutmodules) {
+        if (id == R.id.nav_activity_workoutmodules) {
             resetTimer();
             this.finish();
             startAnimatedActivity(new Intent(getApplicationContext(), WorkoutModuleActivity.class));
@@ -199,62 +161,24 @@ public class TimerActivity extends BaseActivity {
             startAnimatedActivity(new Intent(getApplicationContext(), WorkoutActivity.class));
         }
 
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
+/*
     @Override
     protected void onStart() {
         super.onStart();
-/*
-        getWorkout2(); //Get the Workoutnames on the Variables
-        SharedPreferences sh = getSharedPreferences(workout1, MODE_PRIVATE);
-
-        final TextView nameView = (TextView) findViewById(R.id.workoutname);
-        String name = sh.getString("Name", "");
-        nameView.setText("Modul: " + name);
-
-        final TextView repetitionsView = (TextView) findViewById(R.id.Repetitions);
-        Integer i = sh.getInt("Repetitions", 0);
-        repetitionsView.setText("Repetitions: " + i.toString());
-
-        final TextView setsView = (TextView) findViewById(R.id.Sets);
-        Integer i2 = sh.getInt("Sets", 0);
-        setsView.setText("Sets: " + i2.toString());
-        timer_semaphor_initial_start = 1;
-        semaphor_hang_or_rest = 1;
-
-        final TextView countdownView = (TextView) findViewById(R.id.countdownView);
-        Integer i3 = sh.getInt("HangTime_min", 0)*60+ sh.getInt("HangTime_sec", 0);
-        Integer i4 = (sh.getInt("RestTime_min", 0)*60+ sh.getInt("RestTime_sec", 0));
-        countdownView.setTextSize(30);
-        countdownView.setText("Hang: "+i3+"\nRest: "+i4);
-
-        timercounter = 1;*/
-    }
+    }*/
 
     public void startTimer(View view) {
-        /*
-        if (StartTransition == true) {
-            transitionVersuch();
-            StartTransition = false;
-        }*/
-        //getWorkout2();
         if (timercounter == 1) {timer(workout1);}
         else if (timercounter == 2) {timer(workout2);}
         else if (timercounter == 3) {timer(workout3);}
     }
 
     public void timer(final String workoutID) {
-/*
-        final TextView NameView = (TextView) findViewById(R.id.workoutname);
-        final TextView countdownView = (TextView) findViewById(R.id.countdownView);
-        final TextView hangRestView = (TextView) findViewById(R.id.workoutState);
-        final Button button2 = (Button) findViewById(R.id.button1);
-        final TextView repetitionsView = (TextView) findViewById(R.id.Repetitions);
-        final TextView setsView = (TextView) findViewById(R.id.Sets);
-*/
+
         if (timer_semaphor_start_stop == 1) {   //Start
             timer_semaphor_start_stop = 0;
             button2.setBackground(getResources().getDrawable(R.drawable.pause_grau));
@@ -279,15 +203,9 @@ public class TimerActivity extends BaseActivity {
                 setsView.setText("Sets: " + sets);
                 if (timercounter > 1) {
                     countdownTime = breaktime_modules;
-                    /*
-                    repetitionsView.setText("Repetitions: " + repetitions);
-                    setsView.setText("Sets: " + sets);*/
                     hangRestView.setText("Break");
                 } else {
                     countdownTime = 5;
-                    /*
-                    repetitionsView.setText("Repetitions: " + repetitions);
-                    setsView.setText("Sets: " + sets);*/
                     hangRestView.setText("Countdown");
                 }
                 semaphor_hang_or_rest = 1;
@@ -317,7 +235,6 @@ public class TimerActivity extends BaseActivity {
             timer_hang = new CountDownTimer(hangTime * 1000, 1000) {
                 public void onTick(long millisUntilFinished) {
                     countdownView.setText("" + (millisUntilFinished + 100) / 1000);
-                    //current_hang = (int) ((millisUntilFinished + 100) / 1000);
                 }
 
                 public void onFinish() {
@@ -415,7 +332,7 @@ public class TimerActivity extends BaseActivity {
 
     public void reset(View view) {
         resetTimer();
-        final Button button2 = (Button) findViewById(R.id.button1);
+        final Button button2 = findViewById(R.id.button1);
         button2.setBackground(getResources().getDrawable(R.drawable.start_grau));
         initializeNumbers();
     }

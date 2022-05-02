@@ -9,7 +9,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -67,24 +66,24 @@ public class WorkoutOpenedFragment extends Fragment {
     }
 
     public void setupViews(View view) {
-        textName = (TextView)view.findViewById(R.id.text_name);
-        buttonTime = (Button) view.findViewById(R.id.button_time);
-        spinnerWeekday = (Spinner) view.findViewById(R.id.spinner_weekday);
-        spinnerWorkout = (Spinner) view.findViewById(R.id.spinner_workout);
-        switch1 = (Switch) view.findViewById(R.id.switch1);
-        buttonAdd = (Button) view.findViewById(R.id.addButton);
-        switchButton1 = (Button) view.findViewById(R.id.switchButton1);
-        switchButton2 = (Button) view.findViewById(R.id.switchButton2);
-        workout1 = (TextView)view.findViewById(R.id.workout1);
-        workout2 = (TextView)view.findViewById(R.id.workout2);
-        workout3 = (TextView)view.findViewById(R.id.workout3);
-        deleteButton1 = (Button) view.findViewById(R.id.deleteButton1);
-        deleteButton2 = (Button) view.findViewById(R.id.deleteButton2);
-        deleteButton3 = (Button) view.findViewById(R.id.deleteButton3);
-        deleteWorkoutButton = (Button) view.findViewById(R.id.DeleteWorkoutButton);
-        startButton = (Button) view.findViewById(R.id.startButton);
-        button_breaktime = (Button) view.findViewById(R.id.button_breaktime);
-        divider = (ImageView) view.findViewById(R.id.imageView5);
+        textName = view.findViewById(R.id.text_name);
+        buttonTime = view.findViewById(R.id.button_time);
+        spinnerWeekday = view.findViewById(R.id.spinner_weekday);
+        spinnerWorkout = view.findViewById(R.id.spinner_workout);
+        switch1 = view.findViewById(R.id.switch1);
+        buttonAdd = view.findViewById(R.id.addButton);
+        switchButton1 = view.findViewById(R.id.switchButton1);
+        switchButton2 = view.findViewById(R.id.switchButton2);
+        workout1 = view.findViewById(R.id.workout1);
+        workout2 = view.findViewById(R.id.workout2);
+        workout3 = view.findViewById(R.id.workout3);
+        deleteButton1 = view.findViewById(R.id.deleteButton1);
+        deleteButton2 = view.findViewById(R.id.deleteButton2);
+        deleteButton3 = view.findViewById(R.id.deleteButton3);
+        deleteWorkoutButton = view.findViewById(R.id.DeleteWorkoutButton);
+        startButton = view.findViewById(R.id.startButton);
+        button_breaktime = view.findViewById(R.id.button_breaktime);
+        divider = view.findViewById(R.id.imageView5);
 
 
     }
@@ -379,10 +378,9 @@ public class WorkoutOpenedFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 final Dialog d = new Dialog(getActivity());
-                //d.setTitle("NumberPicker");
                 d.setContentView(R.layout.dialog_delete);
-                Button b1 = (Button) d.findViewById(R.id.dialogN_button1);
-                Button b2 = (Button) d.findViewById(R.id.dialogN_button2);
+                Button b1 = d.findViewById(R.id.dialogN_button1);
+                Button b2 = d.findViewById(R.id.dialogN_button2);
 
 
                 b1.setOnClickListener(new View.OnClickListener()
@@ -484,16 +482,16 @@ public class WorkoutOpenedFragment extends Fragment {
         final Dialog d = new Dialog(getActivity());
         d.setTitle("NumberPicker");
         d.setContentView(R.layout.dialog_numberpicker_two);
-        Button b1 = (Button) d.findViewById(R.id.dialog2_button1);
-        Button b2 = (Button) d.findViewById(R.id.dialog2_button2);
-        final NumberPicker np = (NumberPicker) d.findViewById(R.id.dialog2_numberPicker1);
+        Button b1 = d.findViewById(R.id.dialog2_button1);
+        Button b2 = d.findViewById(R.id.dialog2_button2);
+        final NumberPicker np = d.findViewById(R.id.dialog2_numberPicker1);
 
         np.setMaxValue(59);
         np.setValue(breakTime_min);
         np.setMinValue(0);
         np.setWrapSelectorWheel(false);
 
-        final NumberPicker np2 = (NumberPicker) d.findViewById(R.id.dialog2_numberPicker2);
+        final NumberPicker np2 = d.findViewById(R.id.dialog2_numberPicker2);
         np2.setMaxValue(59);
         np2.setValue(breakTime_sec);
         np2.setMinValue(0);
@@ -538,9 +536,9 @@ public class WorkoutOpenedFragment extends Fragment {
         final Dialog d = new Dialog(getActivity()); //oder getActivity().getApplicationContext();
         d.setTitle("TimePicker");
         d.setContentView(R.layout.dialog_timepicker);
-        Button b1 = (Button) d.findViewById(R.id.dialogN_button1);
-        Button b2 = (Button) d.findViewById(R.id.dialogN_button2);
-        final TimePicker tp = (TimePicker) d.findViewById(R.id.dialog_selectTime);
+        Button b1 = d.findViewById(R.id.dialogN_button1);
+        Button b2 = d.findViewById(R.id.dialogN_button2);
+        final TimePicker tp = d.findViewById(R.id.dialog_selectTime);
         tp.setIs24HourView(true);
         SharedPreferences sh = getActivity().getSharedPreferences("Fragment"+id.toString(),MODE_PRIVATE);
         int hour = sh.getInt("hour", 0);
@@ -594,7 +592,7 @@ public class WorkoutOpenedFragment extends Fragment {
         int hour = sh.getInt("hour", 0);
         int minute = sh.getInt("minute", 0);
         String s = (String) spinnerWeekday.getSelectedItem();
-        String toastText = "";
+        String toastText;
         if (minute<10) {
             toastText = "Selected time is "+s+" at "+hour+".0"+minute;
         }else {

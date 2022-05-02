@@ -26,9 +26,9 @@ public class WorkoutModuleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_workout_module, container, false);
-        textName = (TextView)view.findViewById(R.id.text_name);
-        textDescription = (TextView)view.findViewById(R.id.button_text2);
-        textDescription2 = (TextView)view.findViewById(R.id.button_text3);
+        textName = view.findViewById(R.id.text_name);
+        textDescription = view.findViewById(R.id.button_text2);
+        textDescription2 = view.findViewById(R.id.button_text3);
 
         SharedPreferences sh = getActivity().getSharedPreferences("workout" + id.toString(), MODE_PRIVATE);
         try {
@@ -44,21 +44,14 @@ public class WorkoutModuleFragment extends Fragment {
         textDescription.setText("Hang: "+hangTime+"\nRepetitions: "+sh_repetitions+"\nBreaks: "+breaks);
         textDescription2.setText("Rest: "+restTime+"\nSets: "+sh_sets);
 
-        //textDescription.setText("Let's go!");
-        //getView().setVisibility(View.GONE);
-
-        ConstraintLayout c = (ConstraintLayout) view.findViewById(R.id.constraintlayout);
+        ConstraintLayout c = view.findViewById(R.id.constraintlayout);
 
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // so etwa Timer starten
                 Intent TimerIntent = new Intent(getActivity(), TimerActivity.class);
                 TimerIntent.putExtra(TimerActivity.WORKOUT_ID, id);
                 ((WorkoutModuleActivity)getActivity()).startAnimatedActivity(TimerIntent);
-              //  getActivity().finish();
-              //  ((WorkoutModuleActivity)getActivity()).finish();
-
             }
         });
 
@@ -69,29 +62,18 @@ public class WorkoutModuleFragment extends Fragment {
                 Intent CreateIntent = new Intent(getActivity().getApplicationContext(), WorkoutModuleCreateActivity.class);
                 CreateIntent.putExtra(WorkoutModuleCreateActivity.WORKOUT_ID, id);
                 ((WorkoutModuleActivity)getActivity()).startAnimatedActivity(CreateIntent);
-               // getActivity().finish();
-               // ((WorkoutModuleActivity)getActivity()).finish();
-
                 return true;
             }
         });
-
-        //setupModuleFragment();
         return view;
     }
 
-    public void setVisibility() {
-        getView().setVisibility(getView().VISIBLE);
-    }
 
     public void setID(int id) {
         System.out.println("HIER: setID: "+id);
         this.id = id;
     }
 
-    public int getID() {
-        return this.id;
-    }
 
 
 

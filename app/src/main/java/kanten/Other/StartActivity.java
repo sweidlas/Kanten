@@ -2,13 +2,11 @@ package kanten.Other;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import kanten.R;
 import kanten.Workout.WorkoutActivity;
 
-import static android.content.Intent.FLAG_FROM_BACKGROUND;
+
 
 public class StartActivity extends AppCompatActivity {
 
@@ -16,7 +14,6 @@ public class StartActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        //moveTaskToBack(true);
         Thread welcomeThread = new Thread() {
 
             @Override
@@ -25,7 +22,6 @@ public class StartActivity extends AppCompatActivity {
                     super.run();
                     sleep(3500);  //Delay of 3.5 seconds
                 } catch (Exception e) {
-
                 } finally {
 
                     Intent i = new Intent(StartActivity.this,

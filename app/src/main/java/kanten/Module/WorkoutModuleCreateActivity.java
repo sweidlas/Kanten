@@ -26,8 +26,8 @@ import java.util.Map;
 
 public class WorkoutModuleCreateActivity extends BaseActivity {
 
-    TextView text1, text_resttime, text_breaktime;
-    Button button, button_hangtime, button_resttime, button_repetitions, button_sets, button_breaks, button_name;
+    TextView text_resttime, text_breaktime;
+    Button button_hangtime, button_resttime, button_repetitions, button_sets, button_breaks, button_name;
     Integer HangTime_min, HangTime_sec, RestTime_min, RestTime_sec, Breaks_min, Breaks_sec, Repetitions, Sets;
     String WorkoutModuleName;
 
@@ -51,8 +51,6 @@ public class WorkoutModuleCreateActivity extends BaseActivity {
     }
 
     public void setupButtons() {
-        text1 = findViewById(R.id.textView_hang);
-        button = findViewById(R.id.button_hangtime);
 
         SharedPreferences sh = getSharedPreferences(getWorkout(), MODE_PRIVATE);
 

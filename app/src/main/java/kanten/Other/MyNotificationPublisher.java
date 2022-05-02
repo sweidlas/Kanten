@@ -1,19 +1,17 @@
 package kanten.Other;
 
-import android.app.AlarmManager;
 import android.app.Notification ;
-        import android.app.NotificationChannel ;
-        import android.app.NotificationManager ;
-        import android.content.BroadcastReceiver ;
-        import android.content.Context ;
-        import android.content.Intent ;
+import android.app.NotificationChannel ;
+import android.app.NotificationManager ;
+import android.content.BroadcastReceiver ;
+import android.content.Context ;
+import android.content.Intent ;
 import android.util.Log;
-//import static com.androidmads.navdraweractivity.Other.ThirdActivity.NOTIFICATION_CHANNEL_ID;
+
 
 public class MyNotificationPublisher extends BroadcastReceiver {
 
     public static String NOTIFICATION_ID = "com.androidmads.navdraweractivity.Other.MyNotificationPublisher.NOTIFICATION_ID" ;
-    //public static String NOTIFICATION = "notification" ;
     public static String NOTIFICATION = "com.androidmads.navdraweractivity.Other.MyNotificationPublisher.NOTIFICATION" ;
 
     public void onReceive (Context context , Intent intent) {
@@ -26,14 +24,14 @@ public class MyNotificationPublisher extends BroadcastReceiver {
 
         if (android.os.Build.VERSION. SDK_INT >= android.os.Build.VERSION_CODES.O) {
             int importance = NotificationManager.IMPORTANCE_HIGH ;
-            NotificationChannel notificationChannel = new NotificationChannel(Weekday_str /*NOTIFICATION_ID 10001*/ , "NOTIFICATION_CHANNEL_NAME_"/*+NOTIFICATION_ID*/, importance) ;
+            NotificationChannel notificationChannel = new NotificationChannel(Weekday_str, "NOTIFICATION_CHANNEL_NAME_", importance) ;
             assert notificationManager != null;
             notificationManager.createNotificationChannel(notificationChannel) ;
         }
 
         System.out.println("Hier: "+Weekday_int);
         assert notificationManager != null;
-        notificationManager.notify( Weekday_int/*Weekday_int/*id 10001*/, notification);
+        notificationManager.notify(Weekday_int, notification);
 
 
 
